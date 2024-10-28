@@ -110,7 +110,7 @@ pub fn reply_to_xml<S: Into<String>>(reply: Reply, from: S, to: S) -> SdkResult<
                 .add_cdata("image")
                 .map_err(exile::error::Error::from)?;
             root.add_child(msg_type);
-            let mut image = Element::from_name("Iamge");
+            let mut image = Element::from_name("Image");
             let mut media_id = Element::from_name("MediaId");
             media_id
                 .add_cdata(i.media_id)
