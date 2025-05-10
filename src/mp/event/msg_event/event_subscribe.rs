@@ -17,7 +17,7 @@ impl ReceivedMessageParser for SubScribeEvent {
             Some(n) => {
                 let event_key = n.text().unwrap_or("");
                 if event_key.is_empty() {
-                    return EventMessage::Subscribe;
+                    return Ok(EventMessage::Subscribe);
                 }
 
                 let ticket = get_text_from_root(node, "Ticket")?;
