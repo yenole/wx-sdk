@@ -16,10 +16,7 @@ impl ReceivedMessageParser for SubScribeEvent {
         let event = match ekn {
             Some(n) => {
                 let event_key = n.text().ok_or_else(|| {
-                    SdkError::InvalidParams(format!(
-                        "Parse XML msg from wechat error: tag `{}` text content is none",
-                        n.tag_name().name()
-                    ))
+                    return EventMessage::Subscribe;
                 })?;
                 let ticket = get_text_from_root(node, "Ticket")?;
                 EventMessage::SubscribeScan(ScanEvent {
